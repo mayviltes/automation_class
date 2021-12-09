@@ -22,6 +22,5 @@ Feature: Buy a product
     And press continue button purchase summary
     And the purchase summary page is displayed
     And press continue confirm
-    And the confirm page is displayed
-    And download form
-    Then confirm download
+    Then the confirm page is displayed
+

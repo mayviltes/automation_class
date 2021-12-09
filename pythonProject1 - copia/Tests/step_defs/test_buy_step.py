@@ -10,7 +10,6 @@ from Pages.InfoPersonalPage import InfoPersonalPage
 from Pages.PaymentPage import PaymentPage
 from Pages.SummaryPage import SummaryPage
 from Pages.ConfirmPage import ConfirmPage
-from Pages.DownloadPage import DownloadPage
 
 # CONSTANTS
 STORE_WEB = 'https://qa-tienda.claro.com.ar/catalogo/inicio#facet:&productBeginIndex:0&orderBy:6&pageView:grid&minPrice:&maxPrice:&pageSize:&'
@@ -160,25 +159,10 @@ def confirm_purchase(browser):
 
     print('advance to next confirmation screen')
 
-@when('the confirm page is displayed')
+@then('the confirm page is displayed')
 def check_confirm(browser):
     confirm_page = ConfirmPage(browser)
 
     assert confirm_page.getTitleConfirm().text == 'Tu pedido se está procesando. En unos minutos recibirás un correo confirmando si tu operación fué exitosa.'
 
     print('Purchase is confirmed')
-
-@when('download form')
-def download_form(browser):
-    confirm_page = ConfirmPage(browser)
-    confirm_page.getDownloandBtn().click()
-
-    print('the download opens')
-
-@then('confirm download')
-def confirm_download(browser):
-    download_page = DownloadPage(browser)
-    download_page.getDownloadBtn().click()
-
-    print('confirmed download')
-
